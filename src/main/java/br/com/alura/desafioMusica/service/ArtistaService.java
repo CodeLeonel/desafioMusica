@@ -9,7 +9,7 @@ import br.com.alura.desafioMusica.repository.ArtistaRepository;
 
 public class ArtistaService {
 
-	public ArtistaRepository repositorio;
+	private ArtistaRepository repositorio;
 	
 	public ArtistaService(ArtistaRepository repositorio) {
 		this.repositorio = repositorio;

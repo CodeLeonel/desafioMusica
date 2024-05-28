@@ -13,4 +13,8 @@ public class Principal {
 		
 	}
 	
+	public void menu() {
+		this.artistaService.listarArtistas();
+	}
+	
 }

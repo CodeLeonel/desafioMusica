@@ -33,6 +33,11 @@ public class Artista {
 		this.nome = nome;
 		this.tipo = tipo;
 	}
+	
+	public void inserirMusica(Musica musica) {
+		musica.setArtista(this);
+		musicas.add(musica);
+	}
 
 	@Override
 	public String toString() {

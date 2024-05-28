@@ -48,7 +48,10 @@ public class Musica {
 	public Artista getArtista() {
 		return artista;
 	}
-	
+
+	public void setArtista(Artista artista) {
+		this.artista = artista;
+	}
 	
 	
 }

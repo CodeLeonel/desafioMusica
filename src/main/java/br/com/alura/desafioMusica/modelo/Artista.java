@@ -25,4 +25,44 @@ public class Artista {
 	@OneToMany( mappedBy = "artista")
 	private List<Musica> musicas = new ArrayList<>();
 	
+	public Artista() {
+		
+	}
+	
+	public Artista(String nome, TipoArtista tipo) {
+		this.nome = nome;
+		this.tipo = tipo;
+	}
+
+	@Override
+	public String toString() {
+		return "[id=" + id + ", nome=" + nome + ", tipo=" + tipo + ", musicas=" + musicas + "]";
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public TipoArtista getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoArtista tipo) {
+		this.tipo = tipo;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public List<Musica> getMusicas() {
+		return musicas;
+	}
+	
+	
+	
 }

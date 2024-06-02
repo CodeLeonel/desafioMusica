@@ -14,8 +14,9 @@ public class Console {
 				4 - Pesquisar músicas por artista
 				5 - Pesquisar dados sobre um artista
 				
-				Digite uma opção:
-				""";
+				0 - Saída
+				
+				Digite uma opção:""";
 		
 		System.out.print(menu);
 		

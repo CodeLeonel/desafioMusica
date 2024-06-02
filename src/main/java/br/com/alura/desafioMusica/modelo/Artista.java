@@ -3,7 +3,9 @@ package br.com.alura.desafioMusica.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,7 +24,7 @@ public class Artista {
 	
 	private TipoArtista tipo;
 	
-	@OneToMany( mappedBy = "artista")
+	@OneToMany(mappedBy = "artista", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Musica> musicas = new ArrayList<>();
 	
 	public Artista() {

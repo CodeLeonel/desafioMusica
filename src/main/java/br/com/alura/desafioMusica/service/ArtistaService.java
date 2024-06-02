@@ -11,23 +11,23 @@ import br.com.alura.desafioMusica.repository.ArtistaRepository;
 
 public class ArtistaService {
 
-	private ArtistaRepository repositorio;
+	private ArtistaRepository artistaRepositorio;
 	
-	public ArtistaService(ArtistaRepository repositorio) {
-		this.repositorio = repositorio;
+	public ArtistaService(ArtistaRepository artistaRepositorio) {
+		this.artistaRepositorio = artistaRepositorio;
 	}
 	
 	public void inserirArtista(String nome, TipoArtista tipo) {
 		
 		Artista novoArtista = new Artista(nome,tipo);
 		
-		this.repositorio.save(novoArtista);
+		this.artistaRepositorio.save(novoArtista);
 		
 	}
 	
 	public Map<Long,String> listarArtistas() {
 		
-		var mapArtistas = this.repositorio.findAll().stream()
+		var mapArtistas = this.artistaRepositorio.findAll().stream()
 			.collect(Collectors
 					.toMap(a -> a.getId(), a -> a.getNome()));
 		
@@ -36,7 +36,7 @@ public class ArtistaService {
 	
 	public List<Musica> listarMusicas() {
 		
-		var listaMusicas = this.repositorio.findAll()
+		var listaMusicas = this.artistaRepositorio.findAll()
 				.stream()
 				.flatMap(a -> a.getMusicas().stream())
 				.collect(Collectors.toList());
@@ -46,7 +46,7 @@ public class ArtistaService {
 	
 	public void inserirMusica(Long idArtista, String nomeMusica) {
 		
-		var artistaOpt = repositorio.findById(idArtista);
+		var artistaOpt = artistaRepositorio.findById(idArtista);
 		
 		if(artistaOpt.isPresent()) {
 			
@@ -56,10 +56,20 @@ public class ArtistaService {
 			
 			artista.inserirMusica(novaMusica);
 			
-			repositorio.save(artista);
+			artistaRepositorio.save(artista);
 			
 		}
 		
+	}
+	
+	public List<Musica> buscaMusicasPorArtista(Long idArtista) {
+		
+		return artistaRepositorio.buscaMusicasPorArtista(idArtista);
+		
+	}
+	
+	public String obterDeatlhesArtistaViaChatGPT(String nomeArtista) {
+		return ConsultaChatGPT.obterDetalhesArtista(nomeArtista);
 	}
 	
 }
